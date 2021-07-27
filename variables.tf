@@ -1,4 +1,4 @@
-ariable vpc_cidr_block{}
+variable vpc_cidr_block{}
 variable aws_az{}
 variable aws_ami{}
 variable aws_key_name{}
