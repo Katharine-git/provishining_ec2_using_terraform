@@ -9,23 +9,24 @@ pipeline{
         stages {
         stage('checkout') {
             steps {
-                 script{
-                        dir("terraform")
-                        {
-                            git "https://github.com/Katharine-git/provishining_ec2_using_terraform.git"
-                        }
-                    }
+                 
+                    git "https://github.com/Katharine-git/provishining_ec2_using_terraform.git"
                 }
+                
             }
-        stage('plan'){
+        stage('Terraform init'){
             steps{
-                sh 'pwd;cd terraform/provishining_ec2_using_terraform ; terraform init'
-                sh 'pwd;cd terraform/provishining_ec2_using_terraform ; terraform plan'
+                sh label: '', script: 'terraform init'
+            }
+        }
+        stage('Terraform plan'){
+            steps{
+                sh label: '', script: 'terraform plan'
             }
        }
         stage('terraform apply'){
             steps{
-                sh 'pwd;cd terraform/provishining_ec2_using_terraform ;terraform apply --auto-approve'
+                sh label: '', script: 'terraform apply --auto-approve'
             }
         }
     }
