@@ -14,13 +14,13 @@ pipeline{
             }
         stage('plan'){
             steps{
-                sh 'terraform init'
-                sh 'terraform plan'
+                sh 'pwd;cd provishining_ec2_using_terraform ; terraform init'
+                sh 'pwd;cd provishining_ec2_using_terraform ; terraform plan'
             }
        }
         stage('terraform apply'){
             steps{
-                sh 'terraform apply --auto-approve'
+                sh 'pwd;cd provishining_ec2_using_terraform ;terraform apply --auto-approve'
             }
         }
     }
