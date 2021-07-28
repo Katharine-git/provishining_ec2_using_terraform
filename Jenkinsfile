@@ -6,21 +6,26 @@ pipeline{
     }
 
     agent any
-    stages{
+        stages {
         stage('checkout') {
             steps {
-                    git "https://github.com/Katharine-git/provishining_ec2_using_terraform.git"
+                 script{
+                        dir("terraform")
+                        {
+                            git "https://github.com/Katharine-git/provishining_ec2_using_terraform.git"
+                        }
+                    }
                 }
             }
         stage('plan'){
             steps{
-                sh 'pwd;cd provishining_ec2_using_terraform ; terraform init'
-                sh 'pwd;cd provishining_ec2_using_terraform ; terraform plan'
+                sh 'pwd;cd terraform/provishining_ec2_using_terraform ; terraform init'
+                sh 'pwd;cd terraform/provishining_ec2_using_terraform ; terraform plan'
             }
        }
         stage('terraform apply'){
             steps{
-                sh 'pwd;cd provishining_ec2_using_terraform ;terraform apply --auto-approve'
+                sh 'pwd;cd terraform/provishining_ec2_using_terraform ;terraform apply --auto-approve'
             }
         }
     }
