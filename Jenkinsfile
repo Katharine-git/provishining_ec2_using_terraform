@@ -12,16 +12,12 @@ pipeline{
                     git "https://github.com/Katharine-git/provishining_ec2_using_terraform.git"
                 }
             }
-    }
-    stages{
         stage('plan'){
             steps{
                 sh 'terraform init'
                 sh 'terraform plan'
             }
        }
-    }
-    stages{
         stage('terraform apply'){
             steps{
                 sh 'terraform apply --auto-approve'
