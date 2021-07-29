@@ -55,5 +55,9 @@ resource "aws_instance" "ustInstance" {
   instance_type = "t2.micro"
   key_name      = var.aws_key_name
   subnet_id     = var.aws_subnet_id
+  
+  tags = {
+    Name = "Linux-VM"
+  }
 }
 
